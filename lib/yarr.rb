@@ -1,4 +1,5 @@
 require "io/console"
+require "readline"
 
 class YARR
   def call
@@ -6,8 +7,7 @@ class YARR
     number = 0
     loop do
       number += 1
-      prompt(number)
-      expression = gets.chomp
+      expression = Readline.readline(prompt(number), true)
       break if expression == "exit"
       evaluate(expression)
     end
@@ -21,7 +21,7 @@ class YARR
   end
 
   def prompt(n)
-    print "#{bold("ruby")}:#{"%03d" % n}#{bold(">")} "
+    "#{bold("ruby")}:#{"%03d" % n}#{bold(">")} "
   end
 
   def evaluate(expression)
