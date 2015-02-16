@@ -77,7 +77,7 @@ class YARR
   end
 
   def hist(args)
-    Readline::HISTORY.to_a.each_with_index do |command, index|
+    Readline::HISTORY.to_a.each.with_index(1) do |command, index|
       puts "  #{bold("%03d" % index)}  #{command}"
     end
   end
