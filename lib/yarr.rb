@@ -33,11 +33,17 @@ class YARR
 
   def process(expression)
     if expression.chr == ":"
-      command, arguments = expression.split(" ", 2)
-      self.send(command[1..-1], arguments)
+      command(expression)
     else
       evaluate(expression)
     end
+  end
+
+  def command(expression)
+    command, arguments = expression.split(" ", 2)
+    self.send(command[1..-1], arguments)
+  rescue
+    puts "#{red("ERROR")} #{command} command is not available"
   end
 
   def exit(args)
@@ -69,7 +75,7 @@ class YARR
   def evaluate(expression)
     puts "#{bold("===>")} #{eval(expression, TOPLEVEL_BINDING)}"
   rescue Exception => e
-    puts bold(red(e.message))
+    puts "#{red("ERROR")} #{e.message}"
   end
 
   def bold(text)
