@@ -14,7 +14,21 @@ class YARR
     number = 0
     loop do
       number += 1
-      expression = Readline.readline(prompt(number), true)
+      separator = ">"
+      expression = ""
+      begin
+        expression += Readline.readline(prompt(number, separator), false)
+        Readline::HISTORY << expression
+        eval(expression, TOPLEVEL_BINDING)
+      rescue SyntaxError => e
+        if e.message =~ /syntax error, unexpected end-of-input/
+          Readline::HISTORY.pop
+          expression += "\n       "
+          separator = "*"
+          retry
+        end
+      rescue Exception => e
+      end
       process(expression)
     end
   end
@@ -27,8 +41,8 @@ class YARR
     puts bold("-" * IO.console.winsize.last)
   end
 
-  def prompt(n)
-    "#{bold("ruby")}:#{"%03d" % n}#{bold(">")} "
+  def prompt(n, separator)
+    "#{bold("ruby")}:#{"%03d" % n}#{bold(separator)} "
   end
 
   def process(expression)
