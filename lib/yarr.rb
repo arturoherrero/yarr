@@ -3,6 +3,7 @@ require "readline"
 
 class YARR
   def initialize
+    $stdout.sync = true
     Readline.completion_append_character = nil
     Readline.completion_proc = lambda do |input|
       commands.grep(/^#{Regexp.escape(input)}/)
