@@ -69,11 +69,12 @@ class YARR
   def help(args)
     puts
     puts "Available commands:"
-    puts "  #{bold(":exit")}   Exit the shell"
-    puts "  #{bold(":help")}   Display this help message"
-    puts "  #{bold(":hist")}   Display edit-line history"
-    puts "  #{bold(":quit")}   Alias to #{bold(":exit")}"
-    puts "  #{bold(":!")} cmd  Execute a shell command à la Vim"
+    puts "  #{bold(":exit")}    Exit the shell"
+    puts "  #{bold(":help")}    Display this help message"
+    puts "  #{bold(":hist")}    Display edit-line history"
+    puts "  #{bold(":quit")}    Alias to #{bold(":exit")}"
+    puts "  #{bold(":")}number  Execute a specific expression from history"
+    puts "  #{bold(":!")} cmd   Execute a shell command à la Vim"
     puts
   end
 
@@ -85,6 +86,14 @@ class YARR
 
   define_method("!") do |args|
     puts `#{args}`
+  end
+
+  def method_missing(name, *args)
+    index = (name.to_s.to_i - 1).tap { |index| raise StandardError if index == -1 }
+    expression = Readline::HISTORY[index]
+    process(expression)
+    Readline::HISTORY.pop
+    Readline::HISTORY << expression
   end
 
   def evaluate(expression)
