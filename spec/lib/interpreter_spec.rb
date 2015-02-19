@@ -14,8 +14,9 @@ RSpec.describe Interpreter do
   end
 
   it "executes multiline line declaration" do
+    result = RUBY_VERSION[0..2] >= "2.1" ? "foo" : ""
     given("def foo", "1", "end")
-    expect(interpreter.call).to eq("\e[1m===>\e[0m foo")
+    expect(interpreter.call).to eq("\e[1m===>\e[0m #{result}")
   end
 
   it "executes multiline line declaration and invocation" do

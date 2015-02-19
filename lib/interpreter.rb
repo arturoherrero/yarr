@@ -5,7 +5,6 @@ class Interpreter
   include Formatter
 
   def initialize
-    self.number = 0
     Readline.completion_append_character = nil
     Readline.completion_proc = lambda do |input|
       commands.grep(/^#{Regexp.escape(input)}/)
@@ -13,11 +12,10 @@ class Interpreter
   end
 
   def call
-    self.number += 1
     separator = ">"
     expression = ""
     begin
-      expression += Readline.readline(prompt(number, separator), false)
+      expression += Readline.readline(prompt(separator), false)
       Readline::HISTORY << expression
       eval(expression, TOPLEVEL_BINDING)
     rescue SyntaxError => e
@@ -34,10 +32,8 @@ class Interpreter
 
   private
 
-  attr_accessor :number
-
-  def prompt(number, separator)
-    "#{bold("ruby")}:#{"%03d" % number}#{bold(separator)} "
+  def prompt(separator)
+    "#{bold("ruby")}:#{"%03d" % (Readline::HISTORY.size + 1)}#{bold(separator)} "
   end
 
   def process(expression)
