@@ -12,7 +12,7 @@ GEM
     diff-lcs (1.2.5)
     ffi (1.9.6)
     formatador (0.2.5)
-    guard (2.12.1)
+    guard (2.12.2)
       formatador (>= 0.2.4)
       listen (~> 2.7)
       lumberjack (~> 1.0)
@@ -34,13 +34,14 @@ GEM
     lumberjack (1.0.9)
     method_source (0.8.2)
     nenv (0.2.0)
-    notiffany (0.0.5)
+    notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -68,5 +69,6 @@ PLATFORMS
 
 DEPENDENCIES
   guard-rspec (~> 4.5)
+  rake (~> 10.4)
   rspec (~> 3.2)
   yarr!
