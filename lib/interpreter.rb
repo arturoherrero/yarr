@@ -1,4 +1,5 @@
 require "readline"
+require "stringio"
 require_relative "formatter"
 
 class Interpreter
@@ -17,7 +18,7 @@ class Interpreter
     begin
       expression += Readline.readline(prompt(separator), false)
       Readline::HISTORY << expression
-      eval(expression, TOPLEVEL_BINDING)
+      capture_stdout { eval(expression, TOPLEVEL_BINDING) }
     rescue SyntaxError => e
       if e.message =~ /syntax error, unexpected end-of-input/
         Readline::HISTORY.pop
@@ -98,5 +99,13 @@ class Interpreter
 
   def commands
     %w(:exit :help :hist :quit :!)
+  end
+
+  def capture_stdout(&block)
+    stdout = $stdout
+    $stdout = StringIO.new
+    block.call
+  ensure
+    $stdout = stdout
   end
 end
