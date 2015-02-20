@@ -67,6 +67,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  guard-rspec (>= 4.5.0)
-  rspec (>= 3.2.0)
+  guard-rspec (~> 4.5)
+  rspec (~> 3.2)
   yarr!

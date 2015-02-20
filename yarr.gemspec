@@ -16,6 +16,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.executables   = ["yarr"]
 
-  spec.add_development_dependency "guard-rspec", ">= 4.5.0"
-  spec.add_development_dependency "rspec", ">= 3.2.0"
+  spec.add_development_dependency "guard-rspec", "~> 4.5"
+  spec.add_development_dependency "rspec", "~> 3.2"
 end
