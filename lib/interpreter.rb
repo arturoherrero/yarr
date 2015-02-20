@@ -83,7 +83,7 @@ class Interpreter
   end
 
   def method_missing(name, *args)
-    index = (name.to_s.to_i - 1).tap { |index| raise StandardError if index == -1 }
+    index = (name.to_s[1..-1].to_i - 1).tap { |index| raise StandardError if index == -1 }
     expression = Readline::HISTORY[index]
     Readline::HISTORY.pop
     Readline::HISTORY << expression
