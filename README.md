@@ -177,9 +177,13 @@ Su Mo Tu We Th Fr Sa
  8  9 10 11 12 13 14
 15 16 17 18 19 20 21
 22 23 24 25 26 27 28
-
-
 ```
+
+## Who made this?
+
+This was made by Arturo Herrero under the MIT License. You can also find me on
+Twitter [@ArturoHerrero][2].
 
 
 [1]: http://pryrepl.org/
+[2]: https://twitter.com/ArturoHerrero
