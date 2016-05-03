@@ -69,7 +69,7 @@ RSpec.describe Interpreter do
   describe ":! cmd" do
     let(:output) { "-rw-r--r--  1 arturo  staff    39 16 Feb 21:11 spec.rb" }
     before do
-      allow(interpreter).to receive(:'`').with("ls -l").and_return(output)
+      allow(interpreter).to receive(:'`').with("export CLICOLOR=1; export CLICOLOR_FORCE=1; ls -l").and_return(output)
     end
 
     it "executes an external shell command" do

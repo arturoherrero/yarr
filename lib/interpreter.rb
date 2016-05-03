@@ -80,7 +80,7 @@ class Interpreter
   end
 
   define_method("!") do |args|
-    `#{args}`
+    `export CLICOLOR=1; export CLICOLOR_FORCE=1; #{args}`
   end
 
   def method_missing(name, *args)
