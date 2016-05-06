@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.name        = "yarr"
-  spec.version     = "0.0.1"
+  spec.version     = "0.1.0"
   spec.summary     = "YARR. Yet Another Ruby REPL"
   spec.description = "YARR. Yet Another Ruby REPL. A Ruby REPL (just a hobby, won't be big and professional like pry)"
   spec.author      = "Arturo Herrero"
@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.executables   = ["yarr"]
 
-  spec.add_development_dependency "guard-rspec", "~> 4.5"
-  spec.add_development_dependency "rake", "~> 10.4"
-  spec.add_development_dependency "rspec", "~> 3.2"
+  spec.add_development_dependency "guard-rspec", "~> 4.6"
+  spec.add_development_dependency "rake", "~> 11.1"
+  spec.add_development_dependency "rspec", "~> 3.4"
 end

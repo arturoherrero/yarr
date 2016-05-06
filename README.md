@@ -4,7 +4,9 @@
 [![Build Status](https://travis-ci.org/arturoherrero/yarr.svg)](https://travis-ci.org/arturoherrero/yarr)
 
 **YARR (Yet Another Ruby REPL)** is a Ruby REPL (just a hobby, won't be big and
-professional like [Pry][1]). YARR was inspired by groovysh, IRB, Pry, Bash and Vim.
+professional like [Pry][1]). YARR was inspired by groovysh<sup>[1][2]</sup>,
+IRB<sup>[2][3]</sup>, Pry<sup>[3][4]</sup>, Bash
+<sup>[4][5]</sup> and Vim<sup>[5][6]</sup>.
 
 ## Installation
 
@@ -182,8 +184,13 @@ Su Mo Tu We Th Fr Sa
 ## Who made this?
 
 This was made by Arturo Herrero under the MIT License. You can also find me on
-Twitter [@ArturoHerrero][2].
+Twitter [@ArturoHerrero][7].
 
 
 [1]: http://pryrepl.org/
-[2]: https://twitter.com/ArturoHerrero
+[2]: http://groovy-lang.org/groovysh.html
+[3]: http://ruby-doc.org/stdlib/libdoc/irb/rdoc/IRB.html
+[4]: http://pryrepl.org/
+[5]: http://www.gnu.org/software/bash/
+[6]: http://www.vim.org/
+[7]: https://twitter.com/ArturoHerrero
