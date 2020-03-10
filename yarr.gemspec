@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.platform = Gem::Platform::RUBY
   spec.name        = "yarr"
-  spec.version     = "0.1.0"
+  spec.version     = "0.1.1"
   spec.summary     = "YARR. Yet Another Ruby REPL"
   spec.description = "YARR. Yet Another Ruby REPL. A Ruby REPL (just a hobby, won't be big and professional like pry)"
   spec.author      = "Arturo Herrero"
