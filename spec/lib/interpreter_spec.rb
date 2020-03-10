@@ -84,7 +84,7 @@ RSpec.describe Interpreter do
       expect(interpreter.call).to eq(<<-END.gsub(/^\s+\||\n$/, '')
         |\e[1;31mERROR\e[0m <main>: syntax error, unexpected &
         |1 + &
-        |     ^
+        |    ^
         END
       )
     end

@@ -9,14 +9,13 @@ Gem::Specification.new do |spec|
   spec.homepage    = "https://github.com/arturoherrero/yarr"
   spec.license     = "MIT"
 
-  spec.required_ruby_version = ">= 2.0.0"
+  spec.required_ruby_version = ">= 2.5.0"
 
   spec.files         = Dir["{bin,lib}/**/*", "LICENSE", "README.md"]
   spec.test_files    = Dir["spec/**/*"]
   spec.require_paths = ["lib"]
   spec.executables   = ["yarr"]
 
-  spec.add_development_dependency "guard-rspec", "~> 4.6"
-  spec.add_development_dependency "rake", "~> 11.1"
-  spec.add_development_dependency "rspec", "~> 3.4"
+  spec.add_development_dependency "guard-rspec", "~> 4.7"
+  spec.add_development_dependency "rspec", "~> 3.9"
 end
