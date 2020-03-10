@@ -23,7 +23,7 @@ class YARR
 
   def banner
     puts bold("YARR | Ruby #{RUBY_VERSION}")
-    puts "Type '#{bold(":help")}' for help."
+    puts "Type '#{bold(':help')}' for help."
     puts bold("-" * IO.console.winsize.last)
   end
 end

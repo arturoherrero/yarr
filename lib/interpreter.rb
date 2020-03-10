@@ -34,7 +34,7 @@ class Interpreter
   private
 
   def prompt(separator)
-    "#{bold("ruby")}:#{"%03d" % (Readline::HISTORY.size + 1)}#{bold(separator)} "
+    "#{bold('ruby')}:#{format('%03d', (Readline::HISTORY.size + 1))}#{bold(separator)} "
   end
 
   def process(expression)
@@ -47,34 +47,34 @@ class Interpreter
 
   def command(expression)
     command, arguments = expression.split(" ", 2)
-    self.send(command[1..-1], arguments)
-  rescue
-    "#{red("ERROR")} #{command} command is not available"
+    send(command[1..-1], arguments)
+  rescue StandardError
+    "#{red('ERROR')} #{command} command is not available"
   end
 
-  def exit(args)
+  def exit(_args)
     exit!
   end
   alias_method :quit, :exit
 
-  def help(args)
-    <<-END.gsub(/^\s+\|/, '')
+  def help(_args)
+    <<-END.gsub(/^\s+\|/, "")
     |
     |Available commands:
-    |  #{bold(":exit")}    Exit the shell
-    |  #{bold(":help")}    Display this help message
-    |  #{bold(":hist")}    Display edit-line history
-    |  #{bold(":quit")}    Alias to #{bold(":exit")}
-    |  #{bold(":")}number  Execute a specific expression from history
-    |  #{bold(":!")} cmd   Execute a shell command à la Vim
+    |  #{bold(':exit')}    Exit the shell
+    |  #{bold(':help')}    Display this help message
+    |  #{bold(':hist')}    Display edit-line history
+    |  #{bold(':quit')}    Alias to #{bold(':exit')}
+    |  #{bold(':')}number  Execute a specific expression from history
+    |  #{bold(':!')} cmd   Execute a shell command à la Vim
     |
     END
   end
 
-  def hist(args)
+  def hist(_args)
     "".tap do |history|
       Readline::HISTORY.to_a.each.with_index(1) do |command, index|
-        history << "  #{bold("%03d" % index)}  #{command}\n"
+        history << "  #{bold('%03d' % index)}  #{command}\n"
       end
     end
   end
@@ -83,7 +83,7 @@ class Interpreter
     `export CLICOLOR=1; export CLICOLOR_FORCE=1; #{args}`
   end
 
-  def method_missing(name, *args)
+  def method_missing(name, *_args)
     index = (name.to_s[1..-1].to_i - 1).tap { |index| raise StandardError if index == -1 }
     expression = Readline::HISTORY[index]
     Readline::HISTORY.pop
@@ -92,13 +92,13 @@ class Interpreter
   end
 
   def evaluate(expression)
-    "#{bold("===>")} #{eval(expression, TOPLEVEL_BINDING)}"
+    "#{bold('===>')} #{eval(expression, TOPLEVEL_BINDING)}"
   rescue Exception => e
-    "#{red("ERROR")} #{e.message}"
+    "#{red('ERROR')} #{e.message}"
   end
 
   def commands
-    %w(:exit :help :hist :quit :!)
+    %w[:exit :help :hist :quit :!]
   end
 
   def capture_stdout(&block)

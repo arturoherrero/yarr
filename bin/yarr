@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require File.expand_path("../../lib/yarr", __FILE__)
+require File.expand_path("../lib/yarr", __dir__)
 
 YARR.new.call

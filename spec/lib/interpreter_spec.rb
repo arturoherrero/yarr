@@ -31,7 +31,8 @@ RSpec.describe Interpreter do
       setup("def foo", "1", "end")
       setup("foo")
       given(":hist")
-      expect(interpreter.call).to eq(<<-END.gsub(/^\s+\||$/, '')
+      expect(interpreter.call).to eq(
+        <<-END.gsub(/^\s+\||$/, ""),
         |  \e[1m001\e[0m  5
         |  \e[1m002\e[0m  def foo
         |       1
@@ -56,7 +57,8 @@ RSpec.describe Interpreter do
       setup("var = 0")
       setup(":001")
       given(":hist")
-      expect(interpreter.call).to eq(<<-END.gsub(/^\s+\||$/, '')
+      expect(interpreter.call).to eq(
+        <<-END.gsub(/^\s+\||$/, ""),
         |  \e[1m001\e[0m  var = 5
         |  \e[1m002\e[0m  var = 0
         |  \e[1m003\e[0m  var = 5
@@ -81,7 +83,8 @@ RSpec.describe Interpreter do
   context "invalid expression" do
     it "returns a syntax error" do
       given("1 + &")
-      expect(interpreter.call).to eq(<<-END.gsub(/^\s+\||\n$/, '')
+      expect(interpreter.call).to eq(
+        <<-END.gsub(/^\s+\||\n$/, ""),
         |\e[1;31mERROR\e[0m <main>: syntax error, unexpected &
         |1 + &
         |    ^
